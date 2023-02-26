@@ -1,13 +1,13 @@
 version: "4.16"
 
 services:
-    web:
-        build: nginx
-        ports:
-          - 80:80
-          - 443:443
-        depends_on:
-          - api
+    # web:
+    #     build: nginx
+    #     ports:
+    #       - 80:80
+    #       - 443:443
+    #     depends_on:
+    #       - api
 
     api:
         build: domainchecker
