@@ -11,9 +11,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-
 @app.post("/req")
 async def login(data: str):
     sys.stdout = open(os.devnull, 'w')
