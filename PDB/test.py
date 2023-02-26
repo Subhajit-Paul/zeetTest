@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Form
-import requests as r
-import json
+from fastapi import FastAPI
+import sys, os
+from duckduckgo_images_api import search
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -12,10 +12,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-link = "https://data.rcsb.org/rest/v1/core/entry/"
+
 
 @app.post("/req")
-async def login(data: str = Form(...)):
-    resp = json.loads(r.get(link + data).text)
-    
-    return resp
+async def login(data: str):
+    sys.stdout = open(os.devnull, 'w')
+    results = search(data)
+    return {"image": [i["image"] for i in results["results"]], "thumbnail": [i["thumbnail"] for i in results["results"]]}
