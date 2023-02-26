@@ -1,7 +1,7 @@
 FROM python:3.10
 
 WORKDIR /APIEndpoints 
-COPY ./req.txt /APIEndpoints/requirements.txt
+COPY ./requirements.txt /APIEndpoints/requirements.txt
 RUN python3 -m pip install --upgrade -r /APIEndpoints/requirements.txt
 
 COPY . /APIEndpoints/API
